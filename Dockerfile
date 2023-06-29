@@ -5,6 +5,7 @@ RUN /usr/bin/curl -L -o foundryvtt.zip $TIMED_URL; \
 
 FROM node:lts
 COPY --from=builder /root/foundryvtt /opt/
+RUN ls -la /opt/
 ENTRYPOINT node
 CMD /opt/foundryvtt/main.js --dataPath=/srv/foundrydata
 
