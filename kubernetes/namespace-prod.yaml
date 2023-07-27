@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: foundryvtt-2a1eb860a01a2c43
+  labels:
+    name: foundryvtt-2a1eb860a01a2c43
+    application: foundryvtt
+    environment: production
+
