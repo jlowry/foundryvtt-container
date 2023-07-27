@@ -8,8 +8,9 @@ ARG FOUNDRY_VERSION
 ARG FOUNDRY_UID=421
 COPY --from=builder /opt/foundryvtt /opt/foundryvtt
 
-RUN groupadd --gid ${FOUNDRY_UID} foundry \
-    && useradd --system --home-dir /var/foundryvtt --shell /bin/false --gid ${FOUNDRY_UID}
+RUN addgroup --gid ${FOUNDRY_UID} foundry \
+    && adduser --system --home-dir /var/foundryvtt --shell /bin/false --gid ${FOUNDRY_UID}
 
+USER foundry
 ENTRYPOINT ["node"]
 CMD ["/opt/foundryvtt/main.mjs", "--dataPath=/srv/foundrydata"]
