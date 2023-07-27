@@ -1,6 +1,9 @@
-FROM node:lts-alpine
+FROM node:lts as builder
+COPY FoundryVTT-${FOUNDRY_VERSION}.tar.xz .
+RUN tar xJf FoundryVTT-${FOUNDRY_VERSION}.tar.xz /opt
 
+FROM node:lts-alpine
 ARG FOUNDRY_VERSION
-ADD FoundryVTT-${FOUNDRY_VERSION}.tar.xz /opt
+COPY --from=builder /opt/foundryvtt /opt/foundryvtt
 ENTRYPOINT ["node"]
 CMD ["/opt/foundryvtt/main.mjs", "--dataPath=/srv/foundrydata"]
