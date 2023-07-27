@@ -1,7 +1,7 @@
 FROM node:lts as builder
 ARG FOUNDRY_VERSION
 COPY FoundryVTT-${FOUNDRY_VERSION}.tar.xz .
-RUN tar xJf FoundryVTT-${FOUNDRY_VERSION}.tar.xz /opt
+RUN tar xJf FoundryVTT-${FOUNDRY_VERSION}.tar.xz -C /opt
 
 FROM node:lts-alpine
 ARG FOUNDRY_VERSION
