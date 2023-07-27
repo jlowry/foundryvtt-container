@@ -1,5 +1,5 @@
 import process from 'node:process';
-import Minio from 'minio';
+import * as Minio from 'minio';
 
 function download(bucket, fileName, destination, accessKey, secretKey) {
     const minioClient = new Minio.Client({
